@@ -1,17 +1,28 @@
 # Orbis Research & Data Extraction MCP 🔍
 
-> 500+ research, search, and data extraction APIs for AI agents. Pay per call with USDC on Base — no API keys, no accounts, no subscriptions.
+> Real web search, scraping, and data extraction APIs for AI agents. Pay per call with USDC on Base — no API keys, no accounts, no subscriptions.
 
 [![MCP](https://img.shields.io/badge/MCP-StreamableHTTP-blue)](https://orbisapi.com/api/mcp/research)
-[![Payment](https://img.shields.io/badge/payment-x402%20USDC-green)](https://x402.org)
+[![x402](https://img.shields.io/badge/payment-x402%20USDC-green)](https://x402.org)
 
-## What's Inside
+## What's Actually In Here
 
-- **Web Search** — Google, Bing, DuckDuckGo SERP results, autocomplete, news search
-- **Content Extraction** — scrape and extract structured data from any web page
-- **News & Social** — Reddit, Twitter/X, news feeds, article extraction
-- **Document Intelligence** — PDF/Excel/Invoice parsing, structured data extraction
-- **Research Utilities** — deduplication, compliance checking, rate limit advisors
+These are the most-called APIs in this domain on Orbis:
+
+| API | Calls | What it does |
+|-----|-------|-------------|
+| [Web Search Query](https://orbisapi.com/marketplace/web-search-query-799138) | 241 | Keyword web search returning structured results |
+| [Reddit Subreddit Search API](https://orbisapi.com/marketplace/reddit-subreddit-search-api-724378) | 221 | Search Reddit posts across any subreddit |
+| [Web Content Type Classifier API](https://orbisapi.com/marketplace/web-content-type-classifier-api-e987d6) | 193 | Classify what type of content a URL contains |
+| [Web Data Extractor Intelligence API](https://orbisapi.com/marketplace/web-data-extractor-intelligence-api-57c8a3) | 193 | Intelligently extract structured data from any page |
+| [Reddit Posts & Comments API](https://orbisapi.com/marketplace/reddit-posts-comments-api-c526a6) | 180 | Fetch posts and comments from Reddit |
+| [Google Search Results API](https://orbisapi.com/marketplace/google-search-results-api-9c77d5) | 178 | Structured Google SERP results |
+| [Google Maps & Places API](https://orbisapi.com/marketplace/google-maps-places-api-c38c84) | 173 | Places, reviews, and location data from Google Maps |
+| [Web Scrape Planner API](https://orbisapi.com/marketplace/web-scrape-planner-api-e5a1eb) | 163 | Generate a scraping strategy for any website |
+| [Structured Data Extractor API](https://orbisapi.com/marketplace/structured-data-extractor-api-83f2a2) | 58 | Extract structured JSON from unstructured web pages |
+| [Web Scraping API](https://orbisapi.com/marketplace/web-scraping-api-8d43c0) | 57 | Render and scrape any public web page |
+| [Data Extraction Quality Scorer API](https://orbisapi.com/marketplace/data-extraction-quality-scorer-api-1207ee) | 50 | Score the quality of extracted data |
+| [Web Scraping ROI Calculator API](https://orbisapi.com/marketplace/web-scraping-roi-calculator-api-fce659) | 37 | Estimate the cost/value of a scraping project |
 
 ## Quick Start
 
@@ -54,12 +65,12 @@ mcpServers:
 
 Once connected, try:
 
-- *"Search the web for the latest news about Coinbase and give me a summary"*
-- *"Extract all the pricing data from this product page: https://..."*
-- *"Search Reddit for opinions on GPT-4o — what are people saying?"*
+- *"Search the web for the latest news about Coinbase's x402 integration"*
+- *"Search Reddit's r/MachineLearning for discussions about MCP servers"*
+- *"Scrape this page and extract all the pricing data as JSON: https://..."*
 - *"Get the top 10 Google results for 'best MCP servers 2025'"*
-- *"Parse this invoice PDF and give me the line items as JSON"*
-- *"Extract all the contact info from this website"*
+- *"Find all Google Maps reviews for this business and summarize sentiment"*
+- *"Plan how I'd scrape this e-commerce site for product data"*
 
 ## Direct x402 Usage (Node.js)
 
@@ -73,29 +84,16 @@ const account = privateKeyToAccount(process.env.WALLET_PRIVATE_KEY);
 const walletClient = createWalletClient({ account, chain: base, transport: http() });
 const fetch = wrapFetchWithPayment(globalThis.fetch, walletClient);
 
-// Web search — ~$0.005 per call
+// Google Search — 178 real calls on Orbis
 const resp = await fetch(
-  "https://orbisapi.com/api/proxy/web-search-query-799138/search",
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ query: "MCP servers for AI agents 2025", limit: 10 }),
-  }
+  "https://orbisapi.com/api/proxy/google-search-results-api-9c77d5/search",
+  { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query: "MCP servers for AI agents", limit: 10 }) }
 );
 console.log(await resp.json());
 ```
 
 See `example.mjs` for a full working script.
-
-## MCP Details
-
-| | |
-|---|---|
-| **MCP URL** | `https://orbisapi.com/api/mcp/research` |
-| **Protocol** | StreamableHTTP + SSE |
-| **Payment** | x402 USDC on Base (~$0.005/call) |
-| **Tools** | `browse_apis`, `call_api` |
-| **APIs in pool** | 500+ research/extraction APIs |
 
 ## All Orbis Domain MCPs
 
@@ -105,7 +103,7 @@ See `example.mjs` for a full working script.
 | 🔍 Research & Data | `https://orbisapi.com/api/mcp/research` |
 | 🛒 Commerce & Retail | `https://orbisapi.com/api/mcp/commerce` |
 | ✈️ Travel | `https://orbisapi.com/api/mcp/travel` |
-| 🌐 All 20,200+ APIs | `https://orbisapi.com/api/mcp` |
+| 🌐 All 20,000+ APIs | `https://orbisapi.com/api/mcp` |
 
 ---
 
